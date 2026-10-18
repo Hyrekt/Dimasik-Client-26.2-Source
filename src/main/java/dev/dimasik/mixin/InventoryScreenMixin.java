@@ -1,0 +1,203 @@
+package dev.dimasik.mixin;
+
+import dev.dimasik.client.DimasikClient;
+import dev.dimasik.client.module.render.ShulkerView;
+import dev.dimasik.client.system.Class_Q49u2s432M4ulFXV;
+import dev.dimasik.client.system.Class_Q49u2s432M4ulFXV$QeFcIXK8xVLAApCu;
+import dev.dimasik.client.system.Class_QmNR03reugBgWiPr;
+import dev.dimasik.client.system.Class_rarsEGurCIrNXnKo;
+import dev.dimasik.client.system.Class_ucjlq1kQnFTjSi07;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.inventory.Slot;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(InventoryScreen.class)
+public abstract class InventoryScreenMixin extends AbstractContainerScreen<InventoryMenu> {
+   @Unique
+   private Button dropAllButton;
+   @Unique
+   private boolean shouldDropItems;
+   @Unique
+   private final Class_QmNR03reugBgWiPr dropTimer = new Class_QmNR03reugBgWiPr();
+   @Unique
+   private boolean animationMatrixPushed;
+   @Unique
+   private boolean backgroundAnimationMatrixPushed;
+   @Unique
+   private float inventoryAnimationScale = 1.0F;
+   private static final String f_36507 = "Drop All";
+   private static final long f_36508 = 50L;
+   private static final float f_36509 = 0.5F;
+   private static final float f_36510 = 0.5F;
+   private static final float f_36511 = 0.5F;
+   private static final float f_36512 = 0.5F;
+   private static final float f_36513 = 0.5F;
+   private static final float f_36514 = 0.5F;
+
+   protected InventoryScreenMixin(InventoryMenu var1, Inventory var2, Component var3) {
+      super(var1, var2, var3);
+   }
+
+   @Inject(method = "init", at = @At("TAIL"))
+   private void addDropAllButton(CallbackInfo var1) {
+      if (!((Object)this instanceof Class_ucjlq1kQnFTjSi07) && !((Object)this instanceof Class_rarsEGurCIrNXnKo)) {
+         this.dropAllButton = Button.builder(Component.literal(f_36507), var1x -> {
+            this.shouldDropItems = true;
+            this.dropTimer.m_4459();
+         }).bounds(this.width / 2 - 35, this.height / 2 - 105, 70, 20).build();
+         this.addRenderableWidget(this.dropAllButton);
+         this.updateButtonState();
+         dispatchInventoryAnimation(Class_Q49u2s432M4ulFXV$QeFcIXK8xVLAApCu.START);
+      }
+   }
+
+   @Inject(method = "containerTick", at = @At("TAIL"))
+   private void tickDrop(CallbackInfo var1) {
+      this.updateButtonState();
+      if (this.shouldDropItems && this.menu != null && this.dropTimer.m_4463(f_36508)) {
+         boolean var2 = false;
+
+         for (int var3 = 0; var3 < 5; var3++) {
+            Slot var4 = null;
+
+            for (Slot var6 : ((InventoryMenu)this.menu).slots) {
+               if (var6.hasItem()) {
+                  var4 = var6;
+                  break;
+               }
+            }
+
+            if (var4 == null) {
+               break;
+            }
+
+            this.minecraft
+               .gameMode
+               .handleContainerInput(
+                  ((InventoryMenu)this.menu).containerId, var4.index, var4.getItem().getCount() > 1 ? 1 : 0, ContainerInput.THROW, this.minecraft.player
+               );
+            var2 = true;
+         }
+
+         if (!var2) {
+            this.shouldDropItems = false;
+            this.onClose();
+         }
+
+         this.dropTimer.m_4459();
+      }
+   }
+
+   @Unique
+   private void updateButtonState() {
+      if (this.dropAllButton != null && this.minecraft != null && this.minecraft.player != null) {
+         this.dropAllButton.active = !this.minecraft.player.getInventory().isEmpty();
+      }
+   }
+
+   @Inject(method = "extractRenderState(Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIF)V", at = @At("HEAD"))
+   public void render(GuiGraphicsExtractor var1, int var2, int var3, float var4, CallbackInfo var5) {
+      Class_Q49u2s432M4ulFXV.szHURrSSq5MK0Lun var6 = dispatchInventoryAnimation(Class_Q49u2s432M4ulFXV$QeFcIXK8xVLAApCu.UPDATE);
+      this.animationMatrixPushed = var6.m_4253();
+      if (this.animationMatrixPushed) {
+         this.pushInventoryScale(var1, var6.m_4249());
+      }
+   }
+
+   @Inject(method = "extractRenderState(Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIF)V", at = @At("RETURN"))
+   private void finishInventoryAnimation(GuiGraphicsExtractor var1, int var2, int var3, float var4, CallbackInfo var5) {
+      if (this.animationMatrixPushed) {
+         var1.pose().popMatrix();
+         this.animationMatrixPushed = false;
+      }
+
+      ShulkerView.m_9695(var1, this.getHoveredSlot(var2, var3), var2, var3);
+   }
+
+   @Inject(method = "extractBackground", at = @At("HEAD"))
+   private void animateInventoryBackground(GuiGraphicsExtractor var1, int var2, int var3, float var4, CallbackInfo var5) {
+      Class_Q49u2s432M4ulFXV.szHURrSSq5MK0Lun var6 = dispatchInventoryAnimation(Class_Q49u2s432M4ulFXV$QeFcIXK8xVLAApCu.UPDATE);
+      this.backgroundAnimationMatrixPushed = var6.m_4253();
+      if (this.backgroundAnimationMatrixPushed) {
+         this.inventoryAnimationScale = var6.m_4249();
+         this.pushInventoryScale(var1, this.inventoryAnimationScale);
+      } else {
+         this.inventoryAnimationScale = 1.0F;
+      }
+   }
+
+   @Inject(method = "extractBackground", at = @At("RETURN"))
+   private void finishInventoryBackgroundAnimation(GuiGraphicsExtractor var1, int var2, int var3, float var4, CallbackInfo var5) {
+      if (this.backgroundAnimationMatrixPushed) {
+         var1.pose().popMatrix();
+         this.backgroundAnimationMatrixPushed = false;
+      }
+   }
+
+   public void extractTransparentBackground(GuiGraphicsExtractor var1) {
+      if (!this.animationMatrixPushed && !this.backgroundAnimationMatrixPushed) {
+         super.extractTransparentBackground(var1);
+      } else {
+         var1.pose().pushMatrix();
+
+         try {
+            var1.pose().identity();
+            super.extractTransparentBackground(var1);
+         } finally {
+            var1.pose().popMatrix();
+         }
+      }
+   }
+
+   @Redirect(
+      method = "extractBackground",
+      at = @At(
+         value = "INVOKE",
+         target = "Lnet/minecraft/client/gui/screens/inventory/InventoryScreen;extractEntityInInventoryFollowsMouse(Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIIIIFFFLnet/minecraft/world/entity/LivingEntity;)V"
+      )
+   )
+   private void animateInventoryPlayer(
+      GuiGraphicsExtractor var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, LivingEntity var10
+   ) {
+      float var11 = this.inventoryAnimationScale;
+      float var12 = this.width * f_36509;
+      float var13 = this.height * f_36510;
+      int var14 = Math.round(var12 + (var2 - var12) * var11);
+      int var15 = Math.round(var13 + (var3 - var13) * var11);
+      int var16 = Math.round(var12 + (var4 - var12) * var11);
+      int var17 = Math.round(var13 + (var5 - var13) * var11);
+      int var18 = Math.max(1, Math.round(var6 * var11));
+      InventoryScreen.extractEntityInInventoryFollowsMouse(var1, var14, var15, var16, var17, var18, var7, var8, var9, var10);
+   }
+
+   @Unique
+   private void pushInventoryScale(GuiGraphicsExtractor var1, float var2) {
+      var1.pose().pushMatrix();
+      var1.pose().translate(this.width * f_36511, this.height * f_36512);
+      var1.pose().scale(var2, var2);
+      var1.pose().translate(-this.width * f_36513, -this.height * f_36514);
+   }
+
+   @Unique
+   private static Class_Q49u2s432M4ulFXV.szHURrSSq5MK0Lun dispatchInventoryAnimation(Class_Q49u2s432M4ulFXV$QeFcIXK8xVLAApCu var0) {
+      Class_Q49u2s432M4ulFXV.szHURrSSq5MK0Lun var1 = new Class_Q49u2s432M4ulFXV.szHURrSSq5MK0Lun(var0);
+      if (DimasikClient.m_9057() != null && DimasikClient.m_9057().m_9051() != null) {
+         DimasikClient.m_9057().m_9051().m_9708(var1);
+      }
+
+      return var1;
+   }
+}

@@ -1,0 +1,244 @@
+package dev.dimasik.client.system;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.lwjgl.glfw.GLFW;
+
+public class Class_AjMrqn81FAcRNmHv {
+   public static final Map<String, Integer> f_5177 = new HashMap<>();
+   public static final Map<Integer, String> f_5178 = new HashMap<>();
+   private static final String f_5179 = "A";
+   private static final String f_5180 = "B";
+   private static final String f_5181 = "C";
+   private static final String f_5182 = "D";
+   private static final String f_5183 = "E";
+   private static final String f_5184 = "F";
+   private static final String f_5185 = "G";
+   private static final String f_5186 = "H";
+   private static final String f_5187 = "I";
+   private static final String f_5188 = "J";
+   private static final String f_5189 = "K";
+   private static final String f_5190 = "L";
+   private static final String f_5191 = "M";
+   private static final String f_5192 = "N";
+   private static final String f_5193 = "O";
+   private static final String f_5194 = "P";
+   private static final String f_5195 = "Q";
+   private static final String f_5196 = "R";
+   private static final String f_5197 = "S";
+   private static final String f_5198 = "T";
+   private static final String f_5199 = "U";
+   private static final String f_5200 = "V";
+   private static final String f_5201 = "W";
+   private static final String f_5202 = "X";
+   private static final String f_5203 = "Y";
+   private static final String f_5204 = "Z";
+   private static final String f_5205 = "0";
+   private static final String f_5206 = "1";
+   private static final String f_5207 = "2";
+   private static final String f_5208 = "3";
+   private static final String f_5209 = "4";
+   private static final String f_5210 = "5";
+   private static final String f_5211 = "6";
+   private static final String f_5212 = "7";
+   private static final String f_5213 = "8";
+   private static final String f_5214 = "9";
+   private static final String f_5215 = "F1";
+   private static final String f_5216 = "F2";
+   private static final String f_5217 = "F3";
+   private static final String f_5218 = "F4";
+   private static final String f_5219 = "F5";
+   private static final String f_5220 = "F6";
+   private static final String f_5221 = "F7";
+   private static final String f_5222 = "F8";
+   private static final String f_5223 = "F9";
+   private static final String f_5224 = "F10";
+   private static final String f_5225 = "F11";
+   private static final String f_5226 = "F12";
+   private static final String f_5227 = "NUMPAD1";
+   private static final String f_5228 = "NUMPAD2";
+   private static final String f_5229 = "NUMPAD3";
+   private static final String f_5230 = "NUMPAD4";
+   private static final String f_5231 = "NUMPAD5";
+   private static final String f_5232 = "NUMPAD6";
+   private static final String f_5233 = "NUMPAD7";
+   private static final String f_5234 = "NUMPAD8";
+   private static final String f_5235 = "NUMPAD9";
+   private static final String f_5236 = "SPACE";
+   private static final String f_5237 = "ENTER";
+   private static final String f_5238 = "ESCAPE";
+   private static final String f_5239 = "HOME";
+   private static final String f_5240 = "INSERT";
+   private static final String f_5241 = "DELETE";
+   private static final String f_5242 = "END";
+   private static final String f_5243 = "PAGEUP";
+   private static final String f_5244 = "PAGEDOWN";
+   private static final String f_5245 = "RIGHT";
+   private static final String f_5246 = "LEFT";
+   private static final String f_5247 = "DOWN";
+   private static final String f_5248 = "UP";
+   private static final String f_5249 = "RIGHT_SHIFT";
+   private static final String f_5250 = "LEFT_SHIFT";
+   private static final String f_5251 = "RIGHT_CONTROL";
+   private static final String f_5252 = "LEFT_CONTROL";
+   private static final String f_5253 = "RIGHT_ALT";
+   private static final String f_5254 = "LEFT_ALT";
+   private static final String f_5255 = "RIGHT_SUPER";
+   private static final String f_5256 = "LEFT_SUPER";
+   private static final String f_5257 = "MENU";
+   private static final String f_5258 = "CAPS_LOCK";
+   private static final String f_5259 = "NUM_LOCK";
+   private static final String f_5260 = "SCROLL_LOCK";
+   private static final String f_5261 = "KP_DECIMAL";
+   private static final String f_5262 = "KP_DIVIDE";
+   private static final String f_5263 = "KP_MULTIPLY";
+   private static final String f_5264 = "KP_SUBTRACT";
+   private static final String f_5265 = "KP_PLUS";
+   private static final String f_5266 = "KP_ENTER";
+   private static final String f_5267 = "KP_EQUAL";
+   private static final String f_5268 = "APOSTROPHE";
+   private static final String f_5269 = "SLASH";
+   private static final String f_5270 = "-";
+   private static final String f_5271 = "+";
+   private static final String f_5272 = "BACK";
+   private static final String f_5273 = "BACKSLASH";
+   private static final String f_5274 = ".";
+   private static final String f_5275 = "COMMA";
+   private static final String f_5276 = "PAUSE";
+   private static final String f_5277 = "M1";
+   private static final String f_5278 = "M2";
+   private static final String f_5279 = "M3";
+   private static final String f_5280 = "M4";
+   private static final String f_5281 = "M5";
+   private static final String f_5282 = "GRAVE";
+
+   private static void m_2100() {
+      for (Entry var1 : f_5177.entrySet()) {
+         f_5178.put((Integer)var1.getValue(), (String)var1.getKey());
+      }
+   }
+
+   private static void m_2101() {
+      f_5177.put(f_5179, 65);
+      f_5177.put(f_5180, 66);
+      f_5177.put(f_5181, 67);
+      f_5177.put(f_5182, 68);
+      f_5177.put(f_5183, 69);
+      f_5177.put(f_5184, 70);
+      f_5177.put(f_5185, 71);
+      f_5177.put(f_5186, 72);
+      f_5177.put(f_5187, 73);
+      f_5177.put(f_5188, 74);
+      f_5177.put(f_5189, 75);
+      f_5177.put(f_5190, 76);
+      f_5177.put(f_5191, 77);
+      f_5177.put(f_5192, 78);
+      f_5177.put(f_5193, 79);
+      f_5177.put(f_5194, 80);
+      f_5177.put(f_5195, 81);
+      f_5177.put(f_5196, 82);
+      f_5177.put(f_5197, 83);
+      f_5177.put(f_5198, 84);
+      f_5177.put(f_5199, 85);
+      f_5177.put(f_5200, 86);
+      f_5177.put(f_5201, 87);
+      f_5177.put(f_5202, 88);
+      f_5177.put(f_5203, 89);
+      f_5177.put(f_5204, 90);
+      f_5177.put(f_5205, 48);
+      f_5177.put(f_5206, 49);
+      f_5177.put(f_5207, 50);
+      f_5177.put(f_5208, 51);
+      f_5177.put(f_5209, 52);
+      f_5177.put(f_5210, 53);
+      f_5177.put(f_5211, 54);
+      f_5177.put(f_5212, 55);
+      f_5177.put(f_5213, 56);
+      f_5177.put(f_5214, 57);
+      f_5177.put(f_5215, 290);
+      f_5177.put(f_5216, 291);
+      f_5177.put(f_5217, 292);
+      f_5177.put(f_5218, 293);
+      f_5177.put(f_5219, 294);
+      f_5177.put(f_5220, 295);
+      f_5177.put(f_5221, 296);
+      f_5177.put(f_5222, 297);
+      f_5177.put(f_5223, 298);
+      f_5177.put(f_5224, 299);
+      f_5177.put(f_5225, 300);
+      f_5177.put(f_5226, 301);
+      f_5177.put(f_5227, 321);
+      f_5177.put(f_5228, 322);
+      f_5177.put(f_5229, 323);
+      f_5177.put(f_5230, 324);
+      f_5177.put(f_5231, 325);
+      f_5177.put(f_5232, 326);
+      f_5177.put(f_5233, 327);
+      f_5177.put(f_5234, 328);
+      f_5177.put(f_5235, 329);
+      f_5177.put(f_5236, 32);
+      f_5177.put(f_5237, 257);
+      f_5177.put(f_5238, 256);
+      f_5177.put(f_5239, 268);
+      f_5177.put(f_5240, 260);
+      f_5177.put(f_5241, 261);
+      f_5177.put(f_5242, 269);
+      f_5177.put(f_5243, 266);
+      f_5177.put(f_5244, 267);
+      f_5177.put(f_5245, 262);
+      f_5177.put(f_5246, 263);
+      f_5177.put(f_5247, 264);
+      f_5177.put(f_5248, 265);
+      f_5177.put(f_5249, 344);
+      f_5177.put(f_5250, 340);
+      f_5177.put(f_5251, 345);
+      f_5177.put(f_5252, 341);
+      f_5177.put(f_5253, 346);
+      f_5177.put(f_5254, 342);
+      f_5177.put(f_5255, 347);
+      f_5177.put(f_5256, 343);
+      f_5177.put(f_5257, 348);
+      f_5177.put(f_5258, 280);
+      f_5177.put(f_5259, 282);
+      f_5177.put(f_5260, 281);
+      f_5177.put(f_5261, 330);
+      f_5177.put(f_5262, 331);
+      f_5177.put(f_5263, 332);
+      f_5177.put(f_5264, 333);
+      f_5177.put(f_5265, 334);
+      f_5177.put(f_5266, 335);
+      f_5177.put(f_5267, 336);
+      f_5177.put(f_5268, 39);
+      f_5177.put(f_5269, 47);
+      f_5177.put(f_5270, 45);
+      f_5177.put(f_5271, 61);
+      f_5177.put(f_5272, 259);
+      f_5177.put(f_5273, 92);
+      f_5177.put(f_5274, 46);
+      f_5177.put(f_5275, 44);
+      f_5177.put(f_5276, 284);
+      f_5177.put(f_5277, 0);
+      f_5177.put(f_5278, 1);
+      f_5177.put(f_5279, 2);
+      f_5177.put(f_5280, 3);
+      f_5177.put(f_5281, 4);
+      f_5177.put(f_5282, 96);
+   }
+
+   public static int m_2102(String var0) {
+      for (int var1 = 30; var1 < 348; var1++) {
+         String var2 = GLFW.glfwGetKeyName(var1, -1);
+         if (var2 != null && var2.equalsIgnoreCase(var0)) {
+            return var1;
+         }
+      }
+
+      return -1;
+   }
+
+   static {
+      m_2101();
+      m_2100();
+   }
+}

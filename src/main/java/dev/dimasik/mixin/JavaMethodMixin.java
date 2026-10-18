@@ -1,0 +1,37 @@
+package dev.dimasik.mixin;
+
+import dev.dimasik.client.system.Class_FUILRKIQ6wtWry59;
+import java.lang.reflect.Method;
+import java.util.Map;
+import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.Varargs;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(targets = "org/luaj/vm2/lib/jse/JavaMethod", remap = false)
+public class JavaMethodMixin {
+   @Shadow(remap = false)
+   @Final
+   private Method method;
+   @Shadow(remap = false)
+   @Final
+   private static Map methods;
+   private static final String f_36658 = "getOrDefault";
+   private static final String f_36659 = "put";
+   private static final String f_36660 = "HMI Lua safety layer loaded!";
+
+   @Inject(method = "invokeMethod", at = @At("RETURN"), cancellable = true, remap = false)
+   private void hmiIsSafe(Object var1, Varargs var2, CallbackInfoReturnable<LuaValue> var3) {
+      if (!this.method.isAnnotationPresent(Class_FUILRKIQ6wtWry59.class) && !this.method.getName().equals(f_36658) && !this.method.getName().equals(f_36659)) {
+         var3.setReturnValue(LuaValue.NIL);
+      }
+   }
+
+   static {
+      System.out.println(f_36660);
+   }
+}

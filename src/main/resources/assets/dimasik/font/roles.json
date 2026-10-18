@@ -1,0 +1,8 @@
+{
+  "providers": [
+    {"type":"bitmap","file":"dimasik:font/roles/admin.png","ascent":7,"height":8,"chars":["ꔂ"]},
+    {"type":"bitmap","file":"dimasik:font/roles/beta.png","ascent":7,"height":8,"chars":["ꔃ"]},
+    {"type":"bitmap","file":"dimasik:font/roles/media.png","ascent":7,"height":8,"chars":["ꔆ"]},
+    {"type":"bitmap","file":"dimasik:font/roles/user.png","ascent":7,"height":8,"chars":["ꔇ"]}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "providers": [
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/player.png","ascent":8,"height":10,"chars":["ꔀ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/media.png","ascent":8,"height":10,"chars":["ꔁ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/hero.png","ascent":8,"height":10,"chars":["ꔄ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/yt.png","ascent":8,"height":10,"chars":["ꔅ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/titan.png","ascent":8,"height":10,"chars":["ꔈ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/helper.png","ascent":8,"height":10,"chars":["ꔉ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/avenger.png","ascent":8,"height":10,"chars":["ꔒ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/ml_moder.png","ascent":8,"height":10,"chars":["ꔓ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/overlord.png","ascent":8,"height":10,"chars":["ꔖ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/moder.png","ascent":8,"height":10,"chars":["ꔗ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/magister.png","ascent":8,"height":10,"chars":["ꔠ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/moder_plus.png","ascent":8,"height":10,"chars":["ꔡ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/imperator.png","ascent":8,"height":10,"chars":["ꔤ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/st_moder.png","ascent":8,"height":10,"chars":["ꔥ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/dragon.png","ascent":8,"height":10,"chars":["ꔨ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/gl_moder.png","ascent":8,"height":10,"chars":["ꔩ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/bull.png","ascent":8,"height":10,"chars":["ꔲ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/ml_admin.png","ascent":8,"height":10,"chars":["ꔳ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/tiger.png","ascent":8,"height":10,"chars":["ꔶ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/admin.png","ascent":8,"height":10,"chars":["ꔷ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/hydra.png","ascent":8,"height":10,"chars":["ꕀ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/god.png","ascent":8,"height":10,"chars":["ꕁ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/dracula.png","ascent":8,"height":10,"chars":["ꕄ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/vampire.png","ascent":8,"height":10,"chars":["ꕅ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/cobra.png","ascent":8,"height":10,"chars":["ꕈ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/pegas.png","ascent":8,"height":10,"chars":["ꕉ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/rabbit.png","ascent":8,"height":10,"chars":["ꕒ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/bunny.png","ascent":8,"height":10,"chars":["ꕖ"]},
+    {"type":"bitmap","file":"dimasik:reallyworld/ranks/d_helper.png","ascent":8,"height":10,"chars":["ꕠ"]}
+  ]
+}

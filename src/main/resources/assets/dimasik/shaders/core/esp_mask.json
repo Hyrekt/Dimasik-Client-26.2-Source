@@ -1,0 +1,10 @@
+{
+    "vertex": "dimasik:core/hands_pass",
+    "fragment": "dimasik:core/esp_mask",
+    "samplers": [
+        { "name": "Sampler0" },
+        { "name": "Sampler1" },
+        { "name": "Sampler2" }
+    ],
+    "uniforms": []
+}
